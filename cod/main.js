@@ -221,11 +221,10 @@ function newInputs () {
 }
 
 // The generated columns are the first block of inputs that appear and the generated rows are the second.
-// Called on the dynamically generated submit being pressed.
-// For 1 - get all of the input values into one array (by looping through numCol to get individual input ids). Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.  
+// Get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.  
 function format () {
   
-  // Putting all of the column values into one array - and then doing the same with the row values.
+  // Puts all of the column values into one array - and then does the same with the row values.
   var colArray = [];
   for (i=0; i<numCol; i++) {
     var datValue = getValueById(i);
@@ -245,10 +244,11 @@ function format () {
     return parseInt(string, 10);
   })
 
-//  var finalColArray = [[]];
- // for (j=0; j<numCol; j+=5) {
+  // Creates a 2d array from the previous one, so that 0s can be removed without rendering the array unusable.
+  var colArrayV2 = [[]];
+  for (j=0; j<numCol; j+=5) {
     
-//  }
+  }
   
   return false;
 }
