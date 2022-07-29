@@ -1,0 +1,84 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Styling the input boxes for rows/columns of Nonogram*/
+input[name='inputRC'] {
+  width: 10em;
+}
+
+/* Styling the input boxes for max number of blocks in rows/columns */
+input[name='inputNB'] {
+  width: 17em;
+}
+
+/* Styles the submit in the constant form */
+.submit {
+  margin-top: 0.2em;
+}
+
+/* The next 5 style the dynamically generated input boxes */
+.brInput {
+  width: 2em;
+  height: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.newInput {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+}
+
+.first {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+}
+
+/*styles the first block of inputs created */
+.fiveCol {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  margin-right: 0.25em;
+}
+
+/* styles the second block of inputs created */
+.fiveRow {
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  margin-bottom: 0.25em;
+}
+
+/* styles the dynamically generated submit button */
+.submitInput {
+  margin-bottom: 1em;
+}
+
+
+/* Taking the arrows keys off of the generated input boxes */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"][class='newInput']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"][class='brInput']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"][class='first']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"][class='fiveRow']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"][class='fiveCol']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
