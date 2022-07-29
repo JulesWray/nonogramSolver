@@ -142,11 +142,17 @@ function newInputs () {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.id = numRow;
+              fiveRow.value = numRow;
+              numRow++;
               formal.appendChild(fiveRow);
             } else {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.id = numRow;
+              fiveRow.value = numRow;
+              numRow++;
               formal.appendChild(fiveRow);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
