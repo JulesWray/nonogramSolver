@@ -164,11 +164,17 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.id = numRow;
+              newInput.value = numRow;
+              numRow++;
               formal.appendChild(newInput);
             } else {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.id = numRow;
+              newInput.value = numRow;
+              numRow++;
               formal.appendChild(newInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
@@ -176,15 +182,21 @@ function newInputs () {
           }
         } else {
           for (a=0; a<rowsColumnsNumsBlocks[2]; a++) {
-              if (a !== rowsColumnsNumsBlocks[2]-1) {
+            if (a !== rowsColumnsNumsBlocks[2]-1) {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.id = numRow;
+              brInput.value = numRow;
+              numRow++;
               formal.appendChild(brInput);
             } else {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.id = numRow;
+              brInput.value = numRow;
+              numRow++;
               formal.appendChild(brInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
