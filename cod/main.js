@@ -49,7 +49,7 @@ document.getElementById('form').addEventListener(
 
 //This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below. 
 var numCol = 0;
-var numRow = 0;
+var numRow = 1000;
 function newInputs () {
   for (i=0; i<2; i++) {
     if (i == 0) {
