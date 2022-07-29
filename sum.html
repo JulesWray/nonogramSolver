@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+  <form id='form' onsubmit='return check()'>
+   
+    <!-- This gets the number of columns and rows, which will then be used to generate a suitable grid for the block lengths to be placed in-->
+    <div>Enter the dimensions of your Nonogram into the boxes below.</div>
+    <div>The maximum value accepted is 80, and the minimum is 2:</div>
+    <div>E.g. If your Nonogram was 15 x 20 then you would enter 15 in 'Number of columns', and 20 in 'Number of rows'</div>
+    <input id='nonogramColumns' name='inputRC' type="number" max="80" min="2" placeholder="Number of columns">
+    <input id='nonogramRows' name='inputRC' type="number" max="80" min="2" placeholder="Number of rows">
+    <br></br>
+
+ 
+    <!-- This shows how many boxes you should allow for entering block values for rows and columns. -->
+    <div id='thatTwoDiv'>Now enter the number of blocks in the row that has the most individual blocks and the number of blocks in the column that has the most individual blocks:</div>
+    <div>(The maximum is 12, and the minimum is 1)</div>
+    <!-- <a href='https://ibb.co/cr0Cmrk' target="_blank">Here is an example</a> -->
+    <a href='useful.jpg' target="_blank">Here is an example</a>
+    <div>In that example you would enter 9 for 'Max number of blocks in a row' and 5 for 'Max number of blocks in a columns'</div>
+    <input id='numBlockRow' name='inputNB' type='number' max='12' min='1' placeholder="Max number of blocks in a row">
+    <input id='numBlockColumn' name='inputNB' type='number' max='12' min='1' placeholder="Max number of blocks in a column">
+    <br>
+    
+    <input type="submit" class='submit'>
+    <br></br>
+  
+  </form>
+
+  <form id='formal' onsubmit='return format()'></form>
+  
+  <script src="script.js">
+  </script>
+ 
+</body>
+
+</html>
