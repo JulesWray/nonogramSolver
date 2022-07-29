@@ -220,10 +220,17 @@ function newInputs () {
 function format () {
   var colArray = [];
   var rowArray = [];
+  
   for (i=0; i<numCol; i++) {
     var datValue = getValueById(i);
     colArray.push(datValue);
   }
   console.log(colArray);
+  
+  var finalColArray
+  for (j=0; j<numCol; j+=5) {
+    
+  }
+  
   return false;
 }
