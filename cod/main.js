@@ -4,7 +4,7 @@ function getValue (classOrID) {
   return val;
 }
 
-// validates form and checks how many time the form has been submitted.
+// Validates form and checks how many time the form has been submitted.
 var submitCounter = 1;
 let validated = false;
 function check () {
@@ -47,7 +47,8 @@ document.getElementById('form').addEventListener(
   }
 )
 
-//This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below. 
+// This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below.
+// Delete all .value once the format function has been finished
 var numCol = 0;
 var numRow = 1000;
 function newInputs () {
@@ -213,11 +214,13 @@ function newInputs () {
   }
 }
 
-// We're now calling the generated columns and generated rows 1 and 2 (in the order they appear), in order to keep things simple.
-// This function formats the data received from the dynamically generate form (so it can be used in an algorithm to complete the nonogram), and stops the page from reloading. No validation required. It calls the algorithm function at its end. It takes in an array of length maxblocknum*numofrows/columns and formats it into arrays of maxblocknum inside another array, and then gets rid of any 0s.
+// The generated columns are the first block of inputs that appear and the generated rows are the second.
 // Called on the dynamically generated submit being pressed.
-
-// For 1 - get all of the inputs into one array. Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.
+// For 1 - get all of the input values into one array (by looping through numCol to get individual input ids). Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.
 function format () {
-  
+  var colArray = [];
+  var rowArray = [];
+  for (i=0; i<(numCol+1); i++) {
+    colArray.push(getValue(i))
+  }
 }
