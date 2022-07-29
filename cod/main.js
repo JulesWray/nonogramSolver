@@ -4,6 +4,12 @@ function getValue (classOrID) {
   return val;
 }
 
+// Same as above, but only for id, and can take some cases that the above won't
+function getValueById (id) {
+  var val = document.getElementById(id).value;
+  return val
+}
+
 // Validates form and checks how many time the form has been submitted.
 var submitCounter = 1;
 let validated = false;
@@ -216,21 +222,25 @@ function newInputs () {
 
 // The generated columns are the first block of inputs that appear and the generated rows are the second.
 // Called on the dynamically generated submit being pressed.
-// For 1 - get all of the input values into one array (by looping through numCol to get individual input ids). Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.
+// For 1 - get all of the input values into one array (by looping through numCol to get individual input ids). Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.  
 function format () {
-  var colArray = [];
-  var rowArray = [];
   
+  // Putting all of the column values into one array - and then doing the same with the row values.
+  var colArray = [];
   for (i=0; i<numCol; i++) {
     var datValue = getValueById(i);
     colArray.push(datValue);
   }
-  console.log(colArray);
-  
-  var finalColArray
-  for (j=0; j<numCol; j+=5) {
-    
+  var rowArray = [];
+  for (a=1000; a<numRow; a++) {
+    var sumVal = getValueById(a);
+    rowArray.push(sumVal);
   }
+
+//  var finalColArray = [[]];
+ // for (j=0; j<numCol; j+=5) {
+    
+//  }
   
   return false;
 }
