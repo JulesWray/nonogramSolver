@@ -237,6 +237,14 @@ function format () {
     rowArray.push(sumVal);
   }
 
+  // Turns all of the strings in the arrays into integers 
+  var colArrayV1 = colArray.map( function (string) {
+    return parseInt(string, 10);
+  })
+  var rowArrayV1 = rowArray.map(function (string) {
+    return parseInt(string, 10);
+  })
+
 //  var finalColArray = [[]];
  // for (j=0; j<numCol; j+=5) {
     
