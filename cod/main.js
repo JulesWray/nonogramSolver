@@ -49,7 +49,7 @@ document.getElementById('form').addEventListener(
 
 //This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below. 
 var numCol = 0;
-var numRow = 0;
+var numRow = 1000;
 function newInputs () {
   for (i=0; i<2; i++) {
     if (i == 0) {
@@ -142,11 +142,17 @@ function newInputs () {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.id = numRow;
+              fiveRow.value = numRow;
+              numRow++;
               formal.appendChild(fiveRow);
             } else {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.id = numRow;
+              fiveRow.value = numRow;
+              numRow++;
               formal.appendChild(fiveRow);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
@@ -158,11 +164,17 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.id = numRow;
+              newInput.value = numRow;
+              numRow++;
               formal.appendChild(newInput);
             } else {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.id = numRow;
+              newInput.value = numRow;
+              numRow++;
               formal.appendChild(newInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
@@ -170,15 +182,21 @@ function newInputs () {
           }
         } else {
           for (a=0; a<rowsColumnsNumsBlocks[2]; a++) {
-              if (a !== rowsColumnsNumsBlocks[2]-1) {
+            if (a !== rowsColumnsNumsBlocks[2]-1) {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.id = numRow;
+              brInput.value = numRow;
+              numRow++;
               formal.appendChild(brInput);
             } else {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.id = numRow;
+              brInput.value = numRow;
+              numRow++;
               formal.appendChild(brInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
