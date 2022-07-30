@@ -244,19 +244,30 @@ function format () {
     return parseInt(string, 10);
   })
 
-  // Creates a 2d array from the previous one, so that 0s can be removed without rendering the array unusable.
+  // These two create a 2d array from the previous array, so that 0s can be removed without rendering the array unusable.
+  // Loops through the columns one by one, and for each column loops through every block in the columns, and uses the id of the block to push the value into dataINeed, which at the end of the inner loop will be pushed into the larger 2d array, dataForThisColumn.
   var colArrayV2 = [];
   for (a=0; a<rowsColumnsNumsBlocks[1]; a++) {
-    var dataForThisColumn = []
+    var dataForThisColumn = [];
     for (b=0; b<rowsColumnsNumsBlocks[3]; b++) {
-      var index = (b*rowsColumnsNumsBlocks[1])+a;
+      var index = (b * rowsColumnsNumsBlocks[1]) + a;
       var dataINeed = getValueById(index);
       dataForThisColumn.push(dataINeed);
     }
     colArrayV2.push(dataForThisColumn);
   }
 
+  // Works much the same way as above, just with a few things switched up.
   var rowArrayV2 = [];
-  for (a=0; a<)
+  for (c=0; c<rowsColumnsNumsBlocks[0]; c++) {
+    dataForThisRow = [];
+    for (d=0; d<rowsColumnsNumsBlocks[2]; d++) {
+      var index = (c * 10) + d + 1000;
+      var dataINeed = getValueById(index);
+      dataForThisRow.push(dataINeed);
+    }
+    rowArrayV2.push(dataForThisRow);
+  }
+  
   return false;
 }
