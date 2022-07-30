@@ -231,8 +231,8 @@ function format () {
     colArray.push(datValue);
   }
   var rowArray = [];
-  for (a=1000; a<numRow; a++) {
-    var sumVal = getValueById(a);
+  for (j=1000; j<numRow; j++) {
+    var sumVal = getValueById(j);
     rowArray.push(sumVal);
   }
 
@@ -245,9 +245,15 @@ function format () {
   })
 
   // Creates a 2d array from the previous one, so that 0s can be removed without rendering the array unusable.
-  var colArrayV2 = [[]];
-  for (j=0; j<rowsColumnsNumsBlocks[1]; j+=5) {
-    
+  var colArrayV2 = [];
+  for (a=0; a<rowsColumnsNumsBlocks[1]; a++) {
+    var dataForThisColumn = []
+    for (b=0; b<rowsColumnsNumsBlocks[3]; b++) {
+      var index = (b*10)+a;
+      var dataINeed = getValueById(index);
+      dataForThisColumn.push(dataINeed);
+    }
+    colArrayV2.push(dataForThisColumn);
   }
   
   return false;
