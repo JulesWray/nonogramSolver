@@ -249,12 +249,14 @@ function format () {
   for (a=0; a<rowsColumnsNumsBlocks[1]; a++) {
     var dataForThisColumn = []
     for (b=0; b<rowsColumnsNumsBlocks[3]; b++) {
-      var index = (b*10)+a;
+      var index = (b*rowsColumnsNumsBlocks[1])+a;
       var dataINeed = getValueById(index);
       dataForThisColumn.push(dataINeed);
     }
     colArrayV2.push(dataForThisColumn);
   }
-  
+
+  var rowArrayV2 = [];
+  for (a=0; a<)
   return false;
 }
