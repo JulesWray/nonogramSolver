@@ -246,7 +246,7 @@ function format () {
 
   // Creates a 2d array from the previous one, so that 0s can be removed without rendering the array unusable.
   var colArrayV2 = [[]];
-  for (j=0; j<numCol; j+=5) {
+  for (j=0; j<rowsColumnsNumsBlocks[1]; j+=5) {
     
   }
   
