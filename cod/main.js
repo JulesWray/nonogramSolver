@@ -221,32 +221,13 @@ function newInputs () {
 }
 
 // The generated columns are the first block of inputs that appear and the generated rows are the second.
-// Get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.  
+var finalColArray = [];
+var finalRowArray = [];
 function format () {
-  
-  // Puts all of the column values into one array - and then does the same with the row values.
-  var colArray = [];
-  for (i=0; i<numCol; i++) {
-    var datValue = getValueById(i);
-    colArray.push(datValue);
-  }
-  var rowArray = [];
-  for (j=1000; j<numRow; j++) {
-    var sumVal = getValueById(j);
-    rowArray.push(sumVal);
-  }
 
-  // Turns all of the strings in the arrays into integers 
-  var colArrayV1 = colArray.map( function (string) {
-    return parseInt(string, 10);
-  })
-  var rowArrayV1 = rowArray.map(function (string) {
-    return parseInt(string, 10);
-  })
-
-  // These two create a 2d array from the previous array, so that 0s can be removed without rendering the array unusable.
+  // Creates 2d array
   // Loops through the columns one by one, and for each column loops through every block in the columns, and uses the id of the block to push the value into dataINeed, which at the end of the inner loop will be pushed into the larger 2d array, dataForThisColumn.
-  var colArrayV2 = [];
+  var colArrayV1 = [];
   for (a=0; a<rowsColumnsNumsBlocks[1]; a++) {
     var dataForThisColumn = [];
     for (b=0; b<rowsColumnsNumsBlocks[3]; b++) {
@@ -254,11 +235,11 @@ function format () {
       var dataINeed = getValueById(index);
       dataForThisColumn.push(dataINeed);
     }
-    colArrayV2.push(dataForThisColumn);
+    colArrayV1.push(dataForThisColumn);
   }
 
   // Works much the same way as above, just with a few things switched up.
-  var rowArrayV2 = [];
+  var rowArrayV1 = [];
   for (c=0; c<rowsColumnsNumsBlocks[0]; c++) {
     dataForThisRow = [];
     for (d=0; d<rowsColumnsNumsBlocks[2]; d++) {
@@ -266,8 +247,30 @@ function format () {
       var dataINeed = getValueById(index);
       dataForThisRow.push(dataINeed);
     }
-    rowArrayV2.push(dataForThisRow);
+    rowArrayV1.push(dataForThisRow);
   }
+  console.log(colArrayV1);
+
+  // loops through the 2d arrays and gets rid of the 0s
+  for (e=0; e<rowsColumnsNumsBlocks[1]; e++) {
+    var stepDone = colArrayV1[e].filter(zero => zero);
+    console.log(stepDone)
+    //finalColArray.push(stepDone);
+  }
+ /* for (f=0; f<rowsColumnsNumsBlocks[0]; f++) {
+    var stepDone = rowArrayV1[f].filter(zero => zero);
+    finalRowArray.push(stepDone);
+  }*/
+
+   // Turns all of the strings in the arrays into integers 
+  var finalColArray = finalColArray.map( function (string) {
+    return parseInt(string, 10);
+  })
+  var finalRowArray = finalRowArray.map(function (string) {
+    return parseInt(string, 10);
+  })
+  console.log(finalRowArray);
+  console.log(finalColArray);
   
   return false;
 }
