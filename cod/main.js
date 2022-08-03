@@ -67,15 +67,17 @@ function newInputs () {
               const first = document.createElement('input');
               first.type = 'number';
               first.className = 'first';
+              first.max = rowsColumnsNumsBlocks[0];
+              first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               first.id = numCol;
               first.value = numCol;
               numCol++;
-              first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               formal.appendChild(first);            
             } else if (z !== rowsColumnsNumsBlocks[1]-1 && (z + 1) % 5 === 0) {
               const fiveCol = document.createElement('input');
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
+              fiveCol.max = rowsColumnsNumsBlocks[0];
               fiveCol.id = numCol;
               fiveCol.value = numCol;
               numCol++;
@@ -84,6 +86,7 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[0];
               newInput.id = numCol;
               newInput.value = numCol;
               numCol++;
@@ -92,6 +95,7 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[0];
               newInput.id = numCol;
               newInput.value = numCol;
               numCol++;
@@ -106,6 +110,7 @@ function newInputs () {
               const first = document.createElement('input');
               first.type = 'number';
               first.className = 'first';
+              first.max = rowsColumnsNumsBlocks[0];
               first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               first.id = numCol;
               first.value = numCol;
@@ -115,6 +120,7 @@ function newInputs () {
               const fiveCol = document.createElement('input');
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
+              fiveCol.max = rowsColumnsNumsBlocks[0];
               fiveCol.id = numCol;
               fiveCol.value = numCol;
               numCol++;
@@ -123,6 +129,7 @@ function newInputs () {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[0];
               brInput.id = numCol;
               brInput.value = numCol;
               numCol++;
@@ -131,10 +138,11 @@ function newInputs () {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
-              formal.appendChild(brInput);
+              brInput.max = rowsColumnsNumsBlocks[0];
               brInput.id = numCol;
               brInput.value = numCol;
               numCol++;
+              formal.appendChild(brInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
             }
@@ -149,6 +157,7 @@ function newInputs () {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.max = rowsColumnsNumsBlocks[1];
               fiveRow.id = numRow;
               fiveRow.value = numRow;
               numRow++;
@@ -157,6 +166,7 @@ function newInputs () {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.max = rowsColumnsNumsBlocks[1];
               fiveRow.id = numRow;
               fiveRow.value = numRow;
               numRow++;
@@ -171,6 +181,7 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[1];
               newInput.id = numRow;
               newInput.value = numRow;
               numRow++;
@@ -179,6 +190,7 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[1];
               newInput.id = numRow;
               newInput.value = numRow;
               numRow++;
@@ -193,6 +205,7 @@ function newInputs () {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[1];
               brInput.id = numRow;
               brInput.value = numRow;
               numRow++;
@@ -201,6 +214,7 @@ function newInputs () {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[1];
               brInput.id = numRow;
               brInput.value = numRow;
               numRow++;
@@ -269,4 +283,3 @@ function format () {
   
   return false;
 }
-
