@@ -266,5 +266,15 @@ function format () {
     finalRowArray.push(finalStep);
   }
   
-  return false;
+  tableGeneration();
+  return false
 }
+
+function tableGeneration () {
+  var table = document.createElement('table');
+  table.id = 'table';
+  var td = document.createElement('td');
+  td.style.backgroundColor = 'black';
+  document.body.append(table);
+  document.body.table.appendChild(td)
+} 
