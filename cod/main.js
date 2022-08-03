@@ -4,21 +4,27 @@ function getValue (classOrID) {
   return val;
 }
 
+// Same as above, but only for id, and can take some cases that the above won't
+function getValueById (id) {
+  var val = document.getElementById(id).value;
+  return val
+}
+
 // Validates form and checks how many time the form has been submitted.
 var submitCounter = 1;
-let validated = false;
+let valid = false;
 function check () {
   if (!getValue('#nonogramRows') || !getValue('#nonogramColumns') || !getValue('#numBlockRow') || !getValue('#numBlockColumn') && submitCounter !== 2) {
     alert('Please fill all inputs!');
-    validated = false;
+    valid = false;
     return false;
   } else if (submitCounter !== 2) {
     submitCounter++;
-    validated = true;
+    valid = true;
     return false;
   } else {
-    validated = false;
-    return true
+    valid = false;
+    return true;
   }
 }
 
@@ -27,7 +33,7 @@ let rowsColumnsNumsBlocks = [];
 document.getElementById('form').addEventListener(
   'submit',
   function () {
-    if (validated == true) {
+    if (valid == true) {
       rowsColumnsNumsBlocks = [];
       rowsColumnsNumsBlocks.push(getValue('#nonogramRows'));
       rowsColumnsNumsBlocks.push(getValue('#nonogramColumns'));
@@ -215,15 +221,51 @@ function newInputs () {
 }
 
 // The generated columns are the first block of inputs that appear and the generated rows are the second.
-// Called on the dynamically generated submit being pressed.
-// For 1 - get all of the input values into one array (by looping through numCol to get individual input ids). Then get them into a 2d array with the inner arrays being maxblocknum length, with data (inc 0) inside. Then loop through each of the inner arrays using numberofcolumns, and take out the 0s without affecting order.
+var finalColArray = [];
+var finalRowArray = [];
 function format () {
-  var colArray = [];
-  var rowArray = [];
-  for (i=0; i<numCol; i++) {
-    var datValue = getValueById(i);
-    colArray.push(datValue);
+
+  // Creates 2d array
+  // Loops through the columns one by one, and for each column loops through every block in the columns, and uses the id of the block to push the value into dataINeed, which at the end of the inner loop will be pushed into the larger 2d array, dataForThisColumn.
+  var colArrayV1 = [];
+  for (a=0; a<rowsColumnsNumsBlocks[1]; a++) {
+    var dataForThisColumn = [];
+    for (b=0; b<rowsColumnsNumsBlocks[3]; b++) {
+      var index = (b * rowsColumnsNumsBlocks[1]) + a;
+      var dataINeed = getValueById(index);
+      dataForThisColumn.push(dataINeed);
+    }
+    colArrayV1.push(dataForThisColumn);
   }
-  console.log(colArray);
+
+  // Works much the same way as above, just with a few things switched up.
+  var rowArrayV1 = [];
+  for (c=0; c<rowsColumnsNumsBlocks[0]; c++) {
+    dataForThisRow = [];
+    for (d=0; d<rowsColumnsNumsBlocks[2]; d++) {
+      var index = (c * rowsColumnsNumsBlocks[2]) + d + 1000;
+      var dataINeed = getValueById(index);
+      dataForThisRow.push(dataINeed);
+    }
+    rowArrayV1.push(dataForThisRow);
+  }
+
+  // Loops through the 2d arrays, turns them into integers, and then gets rid of the 0 and NaN values
+  for (e=0; e<rowsColumnsNumsBlocks[1]; e++) {
+    var stepOne = colArrayV1[e].map( function (string) {
+      return parseInt(string, 10);
+    });
+    finalStep = stepOne.filter(zero => zero);
+    finalColArray.push(finalStep);
+  }
+ 
+  for (f=0; f<rowsColumnsNumsBlocks[0]; f++) {
+    var stepOne = rowArrayV1[f].map( function (string) {
+      return parseInt(string, 10);
+    });
+    finalStep = stepOne.filter(zero => zero);
+    finalRowArray.push(finalStep);
+  }
+  
   return false;
 }
