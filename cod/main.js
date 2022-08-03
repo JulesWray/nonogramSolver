@@ -4,7 +4,7 @@ function getValue (classOrID) {
   return val;
 }
 
-// Same as above, but only for id, and can take some cases that the above won't
+// Same as above, but only for id, and can take some cases that the above won't.
 function getValueById (id) {
   var val = document.getElementById(id).value;
   return val
@@ -28,7 +28,7 @@ function check () {
   }
 }
 
-// Triggers on a validated submit to get form data. Puts data in the rowsColumnsNumsBlocks array, and outputs it legibly in a new div for the user
+// Triggers on a validated submit to get form data. Puts data in the rowsColumnsNumsBlocks array, and outputs it legibly in a new div for the user.
 let rowsColumnsNumsBlocks = [];
 document.getElementById('form').addEventListener(
   'submit',
@@ -53,7 +53,7 @@ document.getElementById('form').addEventListener(
   }
 )
 
-// This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below.
+// This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Col', which occurs every 5 rows/columns to make it easier to put in block values; and 'brInput', which is the bottom row of each grid and creates a space below it, so that things aren't jam-packed together.
 var numCol = 0;
 var numRow = 1000;
 function newInputs () {
@@ -249,7 +249,7 @@ function format () {
     rowArrayV1.push(dataForThisRow);
   }
 
-  // Loops through the 2d arrays, turns them into integers, and then gets rid of the 0 and NaN values
+  // Loops through the 2d arrays, turns the strings in it to integers, and then gets rid of the 0 and NaN values.
   for (e=0; e<rowsColumnsNumsBlocks[1]; e++) {
     var stepOne = colArrayV1[e].map( function (string) {
       return parseInt(string, 10);
@@ -265,6 +265,6 @@ function format () {
     finalStep = stepOne.filter(zero => zero);
     finalRowArray.push(finalStep);
   }
-   
+  
   return false;
 }
