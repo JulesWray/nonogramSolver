@@ -4,7 +4,7 @@ function getValue (classOrID) {
   return val;
 }
 
-// Same as above, but only for id, and can take some cases that the above won't
+// Same as above, but only for id, and can take some cases that the above won't.
 function getValueById (id) {
   var val = document.getElementById(id).value;
   return val
@@ -28,7 +28,7 @@ function check () {
   }
 }
 
-// Triggers on a validated submit to get form data. Puts data in the rowsColumnsNumsBlocks array, and outputs it legibly in a new div for the user
+// Triggers on a validated submit to get form data. Puts data in the rowsColumnsNumsBlocks array, and outputs it legibly in a new div for the user.
 let rowsColumnsNumsBlocks = [];
 document.getElementById('form').addEventListener(
   'submit',
@@ -53,8 +53,7 @@ document.getElementById('form').addEventListener(
   }
 )
 
-// This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Row', which occurs every 5 rows/columns to give some order; and 'brInput', which is the bottom row of each grid and creates a space below.
-// Delete all .value once the format function has been finished
+// This function creates grids of inputs for the user to input block lengths, using the data from the rowsColumnsNumsBlocks array. It produces 4 types of input boxes - 'first', which is the first block of the row, to give it indentation; 'newInput', which is filler without special characteristics; 'fiveRow/Col', which occurs every 5 rows/columns to make it easier to put in block values; and 'brInput', which is the bottom row of each grid and creates a space below it, so that things aren't jam-packed together.
 var numCol = 0;
 var numRow = 1000;
 function newInputs () {
@@ -67,33 +66,33 @@ function newInputs () {
               const first = document.createElement('input');
               first.type = 'number';
               first.className = 'first';
-              first.id = numCol;
-              first.value = numCol;
-              numCol++;
+              first.max = rowsColumnsNumsBlocks[0];
               first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
+              first.id = numCol;
+              numCol++;
               formal.appendChild(first);            
             } else if (z !== rowsColumnsNumsBlocks[1]-1 && (z + 1) % 5 === 0) {
               const fiveCol = document.createElement('input');
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
+              fiveCol.max = rowsColumnsNumsBlocks[0];
               fiveCol.id = numCol;
-              fiveCol.value = numCol;
               numCol++;
               formal.appendChild(fiveCol);
             } else if (z !== rowsColumnsNumsBlocks[1]-1) {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[0];
               newInput.id = numCol;
-              newInput.value = numCol;
               numCol++;
               formal.appendChild(newInput);
             } else {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[0];
               newInput.id = numCol;
-              newInput.value = numCol;
               numCol++;
               formal.appendChild(newInput);
               const newBr = document.createElement('br');
@@ -106,35 +105,35 @@ function newInputs () {
               const first = document.createElement('input');
               first.type = 'number';
               first.className = 'first';
+              first.max = rowsColumnsNumsBlocks[0];
               first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               first.id = numCol;
-              first.value = numCol;
               numCol++;
               formal.appendChild(first);
             } else if (b !== rowsColumnsNumsBlocks[1]-1 && (b + 1) % 5 === 0) {
               const fiveCol = document.createElement('input');
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
+              fiveCol.max = rowsColumnsNumsBlocks[0];
               fiveCol.id = numCol;
-              fiveCol.value = numCol;
               numCol++;
               formal.appendChild(fiveCol);            
             } else if (b !== rowsColumnsNumsBlocks[1]-1) {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[0];
               brInput.id = numCol;
-              brInput.value = numCol;
               numCol++;
               formal.appendChild(brInput);            
             } else {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
-              formal.appendChild(brInput);
+              brInput.max = rowsColumnsNumsBlocks[0];
               brInput.id = numCol;
-              brInput.value = numCol;
               numCol++;
+              formal.appendChild(brInput);
               const newBr = document.createElement('br');
               formal.appendChild(newBr);
             }
@@ -149,16 +148,16 @@ function newInputs () {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.max = rowsColumnsNumsBlocks[1];
               fiveRow.id = numRow;
-              fiveRow.value = numRow;
               numRow++;
               formal.appendChild(fiveRow);
             } else {
               const fiveRow = document.createElement('input');
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
+              fiveRow.max = rowsColumnsNumsBlocks[1];
               fiveRow.id = numRow;
-              fiveRow.value = numRow;
               numRow++;
               formal.appendChild(fiveRow);
               const newBr = document.createElement('br');
@@ -171,16 +170,16 @@ function newInputs () {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[1];
               newInput.id = numRow;
-              newInput.value = numRow;
               numRow++;
               formal.appendChild(newInput);
             } else {
               const newInput = document.createElement('input');
               newInput.type = 'number';
               newInput.className = 'newInput';
+              newInput.max = rowsColumnsNumsBlocks[1];
               newInput.id = numRow;
-              newInput.value = numRow;
               numRow++;
               formal.appendChild(newInput);
               const newBr = document.createElement('br');
@@ -193,16 +192,16 @@ function newInputs () {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[1];
               brInput.id = numRow;
-              brInput.value = numRow;
               numRow++;
               formal.appendChild(brInput);
             } else {
               const brInput = document.createElement('input');
               brInput.type = 'number';
               brInput.className = 'brInput';
+              brInput.max = rowsColumnsNumsBlocks[1];
               brInput.id = numRow;
-              brInput.value = numRow;
               numRow++;
               formal.appendChild(brInput);
               const newBr = document.createElement('br');
@@ -250,7 +249,7 @@ function format () {
     rowArrayV1.push(dataForThisRow);
   }
 
-  // Loops through the 2d arrays, turns them into integers, and then gets rid of the 0 and NaN values
+  // Loops through the 2d arrays, turns the strings in it to integers, and then gets rid of the 0 and NaN values.
   for (e=0; e<rowsColumnsNumsBlocks[1]; e++) {
     var stepOne = colArrayV1[e].map( function (string) {
       return parseInt(string, 10);
