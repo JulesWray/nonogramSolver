@@ -12,19 +12,19 @@ function getValueById (id) {
 
 // Validates form and checks how many time the form has been submitted.
 var submitCounter = 1;
-let validated = false;
+let valid = false;
 function check () {
   if (!getValue('#nonogramRows') || !getValue('#nonogramColumns') || !getValue('#numBlockRow') || !getValue('#numBlockColumn') && submitCounter !== 2) {
     alert('Please fill all inputs!');
-    validated = false;
+    valid = false;
     return false;
   } else if (submitCounter !== 2) {
     submitCounter++;
-    validated = true;
+    valid = true;
     return false;
   } else {
-    validated = false;
-    return true
+    valid = false;
+    return true;
   }
 }
 
@@ -33,7 +33,7 @@ let rowsColumnsNumsBlocks = [];
 document.getElementById('form').addEventListener(
   'submit',
   function () {
-    if (validated == true) {
+    if (valid == true) {
       rowsColumnsNumsBlocks = [];
       rowsColumnsNumsBlocks.push(getValue('#nonogramRows'));
       rowsColumnsNumsBlocks.push(getValue('#nonogramColumns'));
@@ -243,34 +243,29 @@ function format () {
   for (c=0; c<rowsColumnsNumsBlocks[0]; c++) {
     dataForThisRow = [];
     for (d=0; d<rowsColumnsNumsBlocks[2]; d++) {
-      var index = (c * 10) + d + 1000;
+      var index = (c * rowsColumnsNumsBlocks[2]) + d + 1000;
       var dataINeed = getValueById(index);
       dataForThisRow.push(dataINeed);
     }
     rowArrayV1.push(dataForThisRow);
   }
-  console.log(colArrayV1);
 
-  // loops through the 2d arrays and gets rid of the 0s
+  // Loops through the 2d arrays, turns them into integers, and then gets rid of the 0 and NaN values
   for (e=0; e<rowsColumnsNumsBlocks[1]; e++) {
-    var stepDone = colArrayV1[e].filter(zero => zero);
-    console.log(stepDone)
-    //finalColArray.push(stepDone);
+    var stepOne = colArrayV1[e].map( function (string) {
+      return parseInt(string, 10);
+    });
+    finalStep = stepOne.filter(zero => zero);
+    finalColArray.push(finalStep);
   }
- /* for (f=0; f<rowsColumnsNumsBlocks[0]; f++) {
-    var stepDone = rowArrayV1[f].filter(zero => zero);
-    finalRowArray.push(stepDone);
-  }*/
-
-   // Turns all of the strings in the arrays into integers 
-  var finalColArray = finalColArray.map( function (string) {
-    return parseInt(string, 10);
-  })
-  var finalRowArray = finalRowArray.map(function (string) {
-    return parseInt(string, 10);
-  })
-  console.log(finalRowArray);
-  console.log(finalColArray);
+ 
+  for (f=0; f<rowsColumnsNumsBlocks[0]; f++) {
+    var stepOne = rowArrayV1[f].map( function (string) {
+      return parseInt(string, 10);
+    });
+    finalStep = stepOne.filter(zero => zero);
+    finalRowArray.push(finalStep);
+  }
   
   return false;
 }
