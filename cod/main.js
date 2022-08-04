@@ -277,12 +277,13 @@ function format () {
 // Find difference - add the block numbers together, then add the number of blocks-1, then take that all away from the column/row amount. This gives you how much you need to take away from each block
 
 var totalColArr = [];
-var totalNumArr = [];
+var totalRowArr = [];
 function secondChecker () {
+  
   var checkRowArr = [];
   var checkColArr = [];
 
-  // Sums all of the rows
+  // Sums all of the blocks in each column, and puts them into the check array
   for (i=0; i<finalColArray.length; i++) {
     var totalColumn = 0;
     for (j=0; j<finalColArray[i].length; j++) {
@@ -292,19 +293,60 @@ function secondChecker () {
     checkColArr.push(totalColumn);
   }
 
+  // Sums all of the blocks in each row, and puts them into the check array
+  for (b=0; b<finalRowArray.length; b++) {
+    var totalRow = 0;
+    for (c=0; c<finalRowArray[b].length; c++) {
+      totalRow += finalRowArray[b][c];
+    }
+    totalRow += finalRowArray[b].length-1;
+    checkRowArr.push(totalRow);
+  }
+
+  // Checks that the sum of the block lengths in each column does not exceed the number of rows.
   var checkedCheckColArr = true;
   for (a=0; a<checkColArr.length; a++){
     if (checkColArr[a] > rowsColumnsNumsBlocks[0]) {
-      alert('The blocks in column ' + a + ' sum to greater than would fit in this nonogram. Please re-enter them');
-      checkColArr.length = 0
-      finalColArray.length = 0
+      alert('The blocks in column ' + (a+1) + ' sum to greater than would fit in this nonogram. Please re-enter them');
+      checkColArr.length = 0;
+      finalColArray.length = 0;
+
+      // So that you don't get buildup of the row array
+      checkRowArr.length = 0;
+      finalRowArray.length = 0;
+      
       checkedCheckColArr = false;
     }
   }
 
+  // Checks that the sum of the block lengths in each row does not exceed the number of columns.
+  var checkedCheckRowArr = true;
+  for (d=0; d<checkRowArr.length; d++){
+    if (checkRowArr[d] > rowsColumnsNumsBlocks[1]) {
+      alert('The blocks in row ' + (d+1) + ' sum to greater than would fit in this nonogram. Please re-enter them');
+      checkRowArr.length = 0;
+      finalRowArray.length = 0;
+
+      // SO that you don't get buildup of the column array
+      checkColArr.length = 0;
+      finalColArray.length = 0;
+      
+      checkedCheckRowArr = false;
+    }
+  }
+
+  // Puts the column sum block values in a new, better array. The resets of arrays earlier in the code worked if wrong numbers were entered - this works no matter what.
   if (checkedCheckColArr === true) {
+    totalColArr.length = 0;
     totalColArr = checkColArr;
   }
-  
+
+  // Puts the row sum block values in a new, better array. The resets of arrays earlier in the code worked if wrong numbers were entered - this works no matter what. 
+  if (checkedCheckRowArr === true) {
+    totalRowArr.length = 0;
+    totalRowArr = checkRowArr;
+  }
+
+  console.log(totalRowArr)
   console.log(totalColArr);
-}
+} 
