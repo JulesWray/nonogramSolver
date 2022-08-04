@@ -266,15 +266,45 @@ function format () {
     finalRowArray.push(finalStep);
   }
   
-  tableGeneration();
+  secondChecker();
   return false
 }
 
-function tableGeneration () {
-  var table = document.createElement('table');
-  table.id = 'table';
-  var td = document.createElement('td');
-  td.style.backgroundColor = 'black';
-  document.body.append(table);
-  document.body.table.appendChild(td)
-} 
+
+// ?Maybe create 2d array of just 0s (filled), 1s (possible), and 2s (definitely not) mimicking the final table, so you can represent things and change? 
+
+// Go through each row and column; find difference; update 2d array
+// Find difference - add the block numbers together, then add the number of blocks-1, then take that all away from the column/row amount. This gives you how much you need to take away from each block
+
+var totalColArr = [];
+var totalNumArr = [];
+function secondChecker () {
+  var checkRowArr = [];
+  var checkColArr = [];
+
+  // Sums all of the rows
+  for (i=0; i<finalColArray.length; i++) {
+    var totalColumn = 0;
+    for (j=0; j<finalColArray[i].length; j++) {
+      totalColumn += finalColArray[i][j];
+    }
+    totalColumn += finalColArray[i].length-1;
+    checkColArr.push(totalColumn);
+  }
+
+  var checkedCheckColArr = true;
+  for (a=0; a<checkColArr.length; a++){
+    if (checkColArr[a] > rowsColumnsNumsBlocks[0]) {
+      alert('The blocks in column ' + a + ' sum to greater than would fit in this nonogram. Please re-enter them');
+      checkColArr.length = 0
+      finalColArray.length = 0
+      checkedCheckColArr = false;
+    }
+  }
+
+  if (checkedCheckColArr === true) {
+    totalColArr = checkColArr;
+  }
+  
+  console.log(totalColArr);
+}
