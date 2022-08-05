@@ -67,6 +67,7 @@ function newInputs () {
               first.type = 'number';
               first.className = 'first';
               first.max = rowsColumnsNumsBlocks[0];
+              first.min = 0;
               first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               first.id = numCol;
               numCol++;
@@ -76,6 +77,7 @@ function newInputs () {
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
               fiveCol.max = rowsColumnsNumsBlocks[0];
+              fiveCol.min = 0;
               fiveCol.id = numCol;
               numCol++;
               formal.appendChild(fiveCol);
@@ -84,6 +86,7 @@ function newInputs () {
               newInput.type = 'number';
               newInput.className = 'newInput';
               newInput.max = rowsColumnsNumsBlocks[0];
+              newInput.min = 0;
               newInput.id = numCol;
               numCol++;
               formal.appendChild(newInput);
@@ -92,6 +95,7 @@ function newInputs () {
               newInput.type = 'number';
               newInput.className = 'newInput';
               newInput.max = rowsColumnsNumsBlocks[0];
+              newInput.min = 0;
               newInput.id = numCol;
               numCol++;
               formal.appendChild(newInput);
@@ -106,6 +110,7 @@ function newInputs () {
               first.type = 'number';
               first.className = 'first';
               first.max = rowsColumnsNumsBlocks[0];
+              first.min = 0;
               first.style.marginLeft = rowsColumnsNumsBlocks[2]*3+'em';
               first.id = numCol;
               numCol++;
@@ -115,6 +120,7 @@ function newInputs () {
               fiveCol.type = 'number';
               fiveCol.className = 'fiveCol';
               fiveCol.max = rowsColumnsNumsBlocks[0];
+              fiveCol.min = 0;
               fiveCol.id = numCol;
               numCol++;
               formal.appendChild(fiveCol);            
@@ -123,6 +129,7 @@ function newInputs () {
               brInput.type = 'number';
               brInput.className = 'brInput';
               brInput.max = rowsColumnsNumsBlocks[0];
+              brInput.min = 0;
               brInput.id = numCol;
               numCol++;
               formal.appendChild(brInput);            
@@ -131,6 +138,7 @@ function newInputs () {
               brInput.type = 'number';
               brInput.className = 'brInput';
               brInput.max = rowsColumnsNumsBlocks[0];
+              brInput.min = 0;
               brInput.id = numCol;
               numCol++;
               formal.appendChild(brInput);
@@ -149,6 +157,7 @@ function newInputs () {
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
               fiveRow.max = rowsColumnsNumsBlocks[1];
+              fiveRow.min = 0;
               fiveRow.id = numRow;
               numRow++;
               formal.appendChild(fiveRow);
@@ -157,6 +166,7 @@ function newInputs () {
               fiveRow.type = 'number';
               fiveRow.className = 'fiveRow';
               fiveRow.max = rowsColumnsNumsBlocks[1];
+              fiveRow.min = 0;
               fiveRow.id = numRow;
               numRow++;
               formal.appendChild(fiveRow);
@@ -171,6 +181,7 @@ function newInputs () {
               newInput.type = 'number';
               newInput.className = 'newInput';
               newInput.max = rowsColumnsNumsBlocks[1];
+              newInput.min = 0;
               newInput.id = numRow;
               numRow++;
               formal.appendChild(newInput);
@@ -179,6 +190,7 @@ function newInputs () {
               newInput.type = 'number';
               newInput.className = 'newInput';
               newInput.max = rowsColumnsNumsBlocks[1];
+              newInput.min = 0;
               newInput.id = numRow;
               numRow++;
               formal.appendChild(newInput);
@@ -193,6 +205,7 @@ function newInputs () {
               brInput.type = 'number';
               brInput.className = 'brInput';
               brInput.max = rowsColumnsNumsBlocks[1];
+              brInput.min = 0;
               brInput.id = numRow;
               numRow++;
               formal.appendChild(brInput);
@@ -201,6 +214,7 @@ function newInputs () {
               brInput.type = 'number';
               brInput.className = 'brInput';
               brInput.max = rowsColumnsNumsBlocks[1];
+              brInput.min = 0;
               brInput.id = numRow;
               numRow++;
               formal.appendChild(brInput);
@@ -270,6 +284,7 @@ function format () {
   return false
 }
 
+
 // ?Maybe create 2d array of just 0s (filled), 1s (possible), and 2s (definitely not) mimicking the final table, so you can represent things and change? 
 // Go through each row and column; find difference; update 2d array
 var totalColArr = [];
@@ -285,7 +300,9 @@ function secondChecker () {
     for (j=0; j<finalColArray[i].length; j++) {
       totalColumn += finalColArray[i][j];
     }
-    totalColumn += finalColArray[i].length-1;
+    if (finalColArray[i].length !== 0) {
+      totalColumn += finalColArray[i].length-1;
+    }
     checkColArr.push(totalColumn);
   }
 
@@ -295,7 +312,9 @@ function secondChecker () {
     for (c=0; c<finalRowArray[b].length; c++) {
       totalRow += finalRowArray[b][c];
     }
-    totalRow += finalRowArray[b].length-1;
+    if (finalRowArray[b].length !== 0) {
+      totalRow += finalRowArray[b].length-1;
+    }
     checkRowArr.push(totalRow);
   }
 
@@ -332,4 +351,10 @@ function secondChecker () {
   // So that you don't get buildup of the row or column arrays
   finalColArray.length = 0;
   finalRowArray.length = 0;
+
+  firstNonogram();
+}
+
+function firstNonogram () {
+  
 }
