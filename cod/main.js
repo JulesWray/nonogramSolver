@@ -270,12 +270,8 @@ function format () {
   return false
 }
 
-
 // ?Maybe create 2d array of just 0s (filled), 1s (possible), and 2s (definitely not) mimicking the final table, so you can represent things and change? 
-
 // Go through each row and column; find difference; update 2d array
-// Find difference - add the block numbers together, then add the number of blocks-1, then take that all away from the column/row amount. This gives you how much you need to take away from each block
-
 var totalColArr = [];
 var totalRowArr = [];
 function secondChecker () {
@@ -307,14 +303,7 @@ function secondChecker () {
   var checkedCheckColArr = true;
   for (a=0; a<checkColArr.length; a++){
     if (checkColArr[a] > rowsColumnsNumsBlocks[0]) {
-      alert('The blocks in column ' + (a+1) + ' sum to greater than would fit in this nonogram. Please re-enter them');
-      checkColArr.length = 0;
-      finalColArray.length = 0;
-
-      // So that you don't get buildup of the row array
-      checkRowArr.length = 0;
-      finalRowArray.length = 0;
-      
+      alert('The blocks in column ' + (a+1) + ' sum to greater than would fit in this nonogram. Please re-enter them.');
       checkedCheckColArr = false;
     }
   }
@@ -323,30 +312,24 @@ function secondChecker () {
   var checkedCheckRowArr = true;
   for (d=0; d<checkRowArr.length; d++){
     if (checkRowArr[d] > rowsColumnsNumsBlocks[1]) {
-      alert('The blocks in row ' + (d+1) + ' sum to greater than would fit in this nonogram. Please re-enter them');
-      checkRowArr.length = 0;
-      finalRowArray.length = 0;
-
-      // SO that you don't get buildup of the column array
-      checkColArr.length = 0;
-      finalColArray.length = 0;
-      
+      alert('The blocks in row ' + (d+1) + ' sum to greater than would fit in this nonogram. Please re-enter them.');
       checkedCheckRowArr = false;
     }
   }
 
-  // Puts the column sum block values in a new, better array. The resets of arrays earlier in the code worked if wrong numbers were entered - this works no matter what.
+  // These put the column sum block values and row sum block valies in new, better arrays.
   if (checkedCheckColArr === true) {
-    totalColArr.length = 0;
     totalColArr = checkColArr;
   }
-
-  // Puts the row sum block values in a new, better array. The resets of arrays earlier in the code worked if wrong numbers were entered - this works no matter what. 
+  
   if (checkedCheckRowArr === true) {
-    totalRowArr.length = 0;
     totalRowArr = checkRowArr;
   }
 
   console.log(totalRowArr)
   console.log(totalColArr);
-} 
+
+  // So that you don't get buildup of the row or column arrays
+  finalColArray.length = 0;
+  finalRowArray.length = 0;
+}
