@@ -355,6 +355,39 @@ function secondChecker () {
   firstNonogram();
 }
 
+
 function firstNonogram () {
-  
+
+  // [row, column]
+  var numNon = [0,0];
+  var table = document.createElement('table');
+  table.border = '1px';
+  document.body.appendChild(table);
+  for (i=0; i<rowsColumnsNumsBlocks[0]; i++) {
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
+    numNon[1] = 0;
+    for (j=0; j<rowsColumnsNumsBlocks[1]; j++) {
+      var td = document.createElement('td');
+      td.id = '_' + numNon[0] + '_' + numNon[1];
+      console.log(td.id)
+      tr.appendChild(td);
+      numNon[1]++;
+    }
+    numNon[0]++;
+  }
+
+  // add a way to find the lengths of each block, and then fill in table boxes accordingly with this function.
+  for (a=0; a<totalColArr.length; a++) {
+    console.log(totalColArr[a])
+    console.log(rowsColumnsNumsBlocks[0])
+    console.log(finalColArray)
+    if (totalColArr[a] == rowsColumnsNumsBlocks[0]) {
+      for (b=0; b<totalColArr[a].length; b++) {
+        var stuff = getValueById('_'+ a + '_' + b)
+        console.log('_'+ a + '_' + b)
+      }
+    }
+  }
+
 }
